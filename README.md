@@ -15,11 +15,11 @@ In order for work to show what I can do, I used JavaScript to:
 
 You can find my deployed page here:
 
-- https://tuffythejeep.github.io/Employee-Payroll-Tracker-by-Alex/
+- https://tuffythejeep.github.io/the-task-board-to-end-all-task-boards/
 
 and my repository page here:
 
-- <(https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards)>
+- <(https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards>)
 
 Here is a picture of my deployed page:
 !image
