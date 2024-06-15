@@ -37,6 +37,8 @@ console.log(newTaskCard);
 // Output: should be { id: 'uniqueTaskId', title: 'Task Title', description: 'Task Description', dueDate: 'Due Date'}
 
 // Todo: create a function to render the task list and make cards draggable
+function renderTaskList() {
+
 const tasks = [
   {
     id: generateTaskId(),
