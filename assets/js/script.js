@@ -11,17 +11,20 @@ function generateTaskId() {
 const taskId = generateTaskId();
 console.log(taskId);
 
-// Todo: create a function to create a task card
-function createTaskCard(taskId, taskTitle, taskDescription, taskDueDate) {
-  const taskCard = {
-    id: taskId,
-    title: taskTitle,
-    description: taskDescription,
-    dueDate: taskDueDate,
-  };
-
-  // The below will return the task card object
-  return taskCard;
+// Todo: create a function to create a task card and return it
+function createTaskCard(task) {
+  return `
+        <div class="card task-card" id="${task.id}" draggable="true">
+            <div class="card-header">
+                <h5 class="card-title">${task.title}</h5>
+                <button class="btn btn-danger btn-sm float-end delete-task" data-task-id="${task.id}">Delete</button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">${task.description}</p>
+                <p class="card-text">Due: ${task.dueDate}</p>
+            </div>
+        </div>
+    `;
 }
 
 const newTaskCard = createTaskCard(
@@ -32,10 +35,6 @@ const newTaskCard = createTaskCard(
 );
 console.log(newTaskCard);
 // Output: should be { id: 'uniqueTaskId', title: 'Task Title', description: 'Task Description', dueDate: 'Due Date'}
-
-
-
-
 
 // Todo: create a function to render the task list and make cards draggable
 const tasks = [
@@ -73,8 +72,6 @@ taskCards.forEach((card) => {
   });
 });
 
-
-
 // Todo: create a function to handle adding a new task
 //function handleAddTask(event) {}
 function addTask(taskName) {
@@ -95,19 +92,13 @@ function addTask(taskName) {
   renderTaskList();
 }
 
-
-
 // Todo: create a function to handle deleting a task
 //function handleDeleteTask(event) {}
 
 // Function to delete a task
 function deleteTask(taskId) {
-    tasks = tasks.filter(task => task.id !== taskId); // Assuming tasks is your array of tasks
+  tasks = tasks.filter((task) => task.id !== taskId); // Assuming tasks is your array of tasks
 }
-
-
-
-
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {}
