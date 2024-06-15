@@ -1,6 +1,6 @@
 // Retrieve tasks and nextId from localStorage
 let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
-let nextId = JSON.parse(localStorage.getItem("nextId"));
+let nextId = JSON.parse(localStorage.getItem("nextId")) || 1;
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -11,18 +11,33 @@ function generateTaskId() {
 const taskId = generateTaskId();
 console.log(taskId);
 
-// Todo: create a function to create a task card and return it
-function createTaskCard(taskId, taskTitle, taskDescription) {
-  const taskCard = {
-    id: taskId,
-    title: taskTitle,
-    description: taskDescription,
-    // Add more properties as needed
-  };
+// Function to color code tasks based on deadlines
+function getTaskColor(task) {
+  const today = dayjs();
+  const dueDate = dayjs(task.dueDate);
+  if (dueDate.isBefore(today)) {
+    return 'bg-danger'; // Red for overdue
+  } else if (dueDate.diff(today, 'day') <= 3) {
+    return 'bg-warning'; // Yellow for nearing deadline
+  }
+  return 'bg-light'; // Default color
+}
 
-  // You can return the task card object or perform other actions with it
- taskList.push(taskCard)
-  return taskCard;
+// Todo: create a function to create a task card and return the HTML
+function createTaskCard(task) {
+  const colorClass = getTaskColor(task);
+  return `
+    <div class="card task-card ${colorClass}" id="${task.id}" draggable="true">
+      <div class="card-header">
+        <h5 class="card-title">${task.title}</h5>
+        <button class="btn btn-danger btn-sm float-end delete-task" data-task-id="${task.id}">Delete</button>
+      </div>
+      <div class="card-body">
+        <p class="card-text">${task.description}</p>
+        <p class="card-text">Due: ${task.dueDate}</p>
+      </div>
+    </div>
+  `;
 }
 
 const newTaskCard = createTaskCard(
@@ -34,7 +49,7 @@ const newTaskCard = createTaskCard(
 console.log(newTaskCard);
 // Output: should be { id: 'uniqueTaskId', title: 'Task Title', description: 'Task Description', dueDate: 'Due Date'}
 
-// Todo: create a function to render the task list and make cards draggable
+// Function to render the task list and make cards draggable
 function renderTaskList() {
   const columns = {
     "to-do": document.getElementById("todo-cards"),
@@ -47,10 +62,14 @@ function renderTaskList() {
     return;
   }
 
-  Object.values(columns).forEach((column) => (column.innerHTML = "")); // Clear existing content
+  Object.values(columns).forEach(column => (column.innerHTML = "")); // Clear existing content
 
-  taskList.forEach((task) => {
-    columns[task.status].insertAdjacentHTML("beforeend", createTaskCard(task));
+  taskList.forEach(task => {
+    if (columns[task.status]) {
+      columns[task.status].insertAdjacentHTML("beforeend", createTaskCard(task));
+    } else {
+      console.error(`Unknown task status: ${task.status}`);
+    }
   });
 
   addEventListeners();
@@ -88,6 +107,7 @@ function addEventListeners() {
 }
 
 // Todo: create a function to handle adding a new task
+// Function to handle adding a new task
 function addTask(taskTitle, taskDescription, taskDueDate) {
   const taskId = generateTaskId();
 
