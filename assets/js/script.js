@@ -65,7 +65,7 @@ taskCards.forEach((card) => {
   });
 });
 
-document.querySelectorAll(".lane").forEach(lane =>) {
+document.querySelectorAll(".lane").forEach(lane => {
     lane.addEventListener("dragover", (event) => {
             event.preventDefault();
         });
