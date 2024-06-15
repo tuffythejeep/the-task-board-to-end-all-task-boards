@@ -32,7 +32,7 @@ and my repository page here:
 - <https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards>
 
 Here is a picture of my deployed page:
-![image](https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards/assets/167649421/5f61332d-9199-4296-9890-3cab3b944569)
+![image](https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards/assets/167649421/2bc48e57-b18b-4efc-850c-7357eb4c1795)
 
 
 ## Installation
