@@ -44,6 +44,11 @@ function renderTaskList() {
     "done": document.getElementById("done-cards"),
   };
 
+  if (!columns["to-do"] || !columns["in-progress"] || !columns["done"]) {
+    console.error("One or more columns are not found in the DOM.");
+    return;
+  }
+
   Object.values(columns).forEach((column) => (column.innerHTML = "")); // Clear existing content
 
   taskList.forEach((task) => {
