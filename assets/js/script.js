@@ -38,34 +38,25 @@ console.log(newTaskCard);
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+  const columns = {
+    "to-do": document.getElementById("todo-cards"),
+    "in-progress": document.getElementById("in-progress-cards"),
+    done: document.getElementById("done-cards"),
+  };
 
-const tasks = [
-  {
-    id: generateTaskId(),
-    title: "Task 1",
-    description: "Description for Task 1",
-  },
-  {
-    id: generateTaskId(),
-    title: "Task 2",
-    description: "Description for Task 2",
-  },
-  // Add more tasks as needed
-];
+  Object.values(columns).forEach((column) => (column.innerHTML = "")); // Clear existing content
 
-const taskContainer = document.getElementById("task-container");
-
-function renderTaskList() {
-  taskContainer.innerHTML = ""; // Clear existing content
-  tasks.forEach((task) => {
-    const taskCard = createTaskCard(task);
-    taskContainer.insertAdjacentHTML("beforeend", taskCard);
+  taskList.forEach((task) => {
+    columns[task.status].insertAdjacentHTML("beforeend", createTaskCard(task));
   });
+
+  addEventListeners();
 }
 
 renderTaskList();
 
 // Add event listeners for drag and drop functionality
+function addEventListeners() {
 const taskCards = document.querySelectorAll(".task-card");
 
 taskCards.forEach((card) => {
@@ -74,32 +65,48 @@ taskCards.forEach((card) => {
   });
 });
 
+document.querySelectorAll(".lane").forEach(lane =>) {
+    lane.addEventListener("dragover", (event) => {
+            event.preventDefault();
+        });
+        lane.addEventListener("drop", (event) => {
+            const taskId = event.dataTransfer.getData("text/plain");
+            const newStatus = lane.id.replace("-cards", "");
+            updateTaskStatus(taskId, newStatus);
+        });
+    });
+
+    document.querySelectorAll(".delete-task").forEach(button => {
+        button.addEventListener("click", (event) => {
+            const taskId = button.getAttribute("data-task-id");
+            deleteTask(taskId);
+        });
+    });
+}
+
+
 // Todo: create a function to handle adding a new task
-//function handleAddTask(event) {}
-function addTask(taskName) {
-  // Generate a unique ID for the new task
-  const taskId = generateUniqueId();
+function addTask(taskTitle, taskDescription, taskDueDate) {
+    const taskId = generateTaskId();
 
-  // Create a new task object with the provided name and generated ID
-  const newTask = {
-    id: taskId,
-    name: taskName,
-    completed: false,
-  };
+    const newTask = {
+        id: taskId,
+        title: taskTitle,
+        description: taskDescription,
+        dueDate: taskDueDate,
+        status: "to-do",
+    };
 
-  // Add the new task to the task list
-  tasks.push(newTask);
-
-  // Update the UI to reflect the new task
-  renderTaskList();
+    taskList.push(newTask);
+    localStorage.setItem("tasks", JSON.stringify(taskList));
+    renderTaskList();
 }
 
 // Todo: create a function to handle deleting a task
-//function handleDeleteTask(event) {}
-
-// Function to delete a task
 function deleteTask(taskId) {
-  tasks = tasks.filter((task) => task.id !== taskId); // Assuming tasks is your array of tasks
+    taskList = taskList.filter(task => task.id !== taskId);
+    localStorage.setItem("tasks", JSON.stringify(taskList));
+    renderTaskList();
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
