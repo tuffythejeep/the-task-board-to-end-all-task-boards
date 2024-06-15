@@ -32,7 +32,8 @@ and my repository page here:
 - <https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards>
 
 Here is a picture of my deployed page:
-![image](https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards/assets/167649421/d330348b-ae5b-4b5b-ae0e-b9edd3f0165c)
+![image](https://github.com/tuffythejeep/the-task-board-to-end-all-task-boards/assets/167649421/5f61332d-9199-4296-9890-3cab3b944569)
+
 
 ## Installation
 
@@ -40,27 +41,28 @@ N/A
 
 ## Usage
 
-Each section on this page was laid out based on Semantic HTML styling and tags, as I deleted non-semantic HTML elements. I also ensured my css file contained all appropriate styling elements so my version of the webpage mirrored the UT Challenge source file, when rendered on a browser.
+My final version of the webpage mirrors the UT Challenge source file, acceptance criteria, rubric, and Sample gif when rendered on a browser.
 
-I used Chrome console (inspect) to ensure my edits, adjustments, changes, and tweaks rendered correctly.
+I used Chrome's console (inspect) to ensure my edits, adjustments, changes, and tweaks rendered correctly.
 
 ## Credits
 
-Credit to Jasper Garcia, my son, who helps me troubleshoot when I am stuck - however, I wrote all my own JavaScript. I was able to ask him questions to clarify, and he prompted and challenged me to take breaks and allow my mind to process the solutions which were brewing.
+Credit to Jasper Garcia, my son, who helps me troubleshoot when I am stuck - however, I wrote all my own JavaScript and HTML updates. 
+I was able to ask him questions to clarify, and he prompted and challenged me to take breaks and allow my mind to process the solutions which were brewing.
 
-When stuck, I referenced the following sites:
+When stuck (and I was stuck a lot), I referenced the following sites:
 
 - <https://developer.mozilla.org/en-US/>
 
 - <https://stackoverflow.com/>
 
+- <https://www.taskade.com/>
+
 - <https://google.com/>
 
 - <https://bing.com/>
 
-I referenced code (HTML and CSS) from the UT provided lessons, however, I wrote all my own changes, edits, tweaks, and versions of my webpage, html, and css.
-
-No outside sources of text, html, or css were copied into my work.
+I referenced code (HTML and CSS) from the UT provided lessons, however, I wrote all my own changes, edits, tweaks, and versions of my webpage, html, and styles.
 
 I commented and committed to my repo heavily.
 
