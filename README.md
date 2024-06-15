@@ -7,13 +7,21 @@ This-is-the-task-board-to-end-all-task-boards
 
 This repository contains my solution for the Module 5 Challenge - "This-is-the-task-board-to-end-all-task-boards"
 
-In order for work to show what I can do, I used JavaScript to:
+In order for my work to show what I can do, I used HTML and JavaScript to:
 
-- Added a function which allows a user to add multiple employees to display on the page.
+- Added a function which lists project tasks, displayed in columns representing the task progress state (Not Yet Started, In Progress, Completed)
 
-- Added a function which takes in the generated array of employees and logs the average salary and number of employees to the console.
+-- Each task is color coded to indicate whether it is nearing the deadline (yellow) or is overdue (red)
 
-- Added a function which takes in the generated array of employees, randomly selects one employee, and uses a template literal to log their full name to the console.
+-- When I click on the button to define a new task, I can enter the title, description and deadline date for the new task into a modal dialog.
+
+-- When I click the save button for that task, the properties for that task are saved in localStorage.
+
+-- When I drag a task to a different progress column, then the task's progress state is updated accordingly and will stay in the new column after refreshing.
+
+-- When I click the delete button for a task, the task is removed from the task board and will not be added back after refreshing.
+
+-- When I refresh the page, the saved tasks persist.
 
 You can find my deployed page here:
 
