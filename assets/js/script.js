@@ -6,7 +6,13 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 function generateTaskId() {
     const timestamp = Date.now(); // this will get me the current timestamp
     const randomNum = Math.floor(Math.random() * 1000); // Generate a random number less than 1000
+    const uniqueId = `${timestamp}-${randomNum}`; // this will combine timestamp and random number
+
+    return uniqueId;
 }
+
+const taskId = generateTaskId ();
+console.log(taskId);
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {}
