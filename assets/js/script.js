@@ -109,6 +109,16 @@ function deleteTask(taskId) {
     renderTaskList();
 }
 
+// Function to update task status
+function updateTaskStatus(taskId, newStatus) {
+    const task = taskList.find(task => task.id === taskId);
+    if (task) {
+        task.status = newStatus;
+        localStorage.setItem("tasks", JSON.stringify(taskList));
+        renderTaskList();
+    }
+}
+
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {}
 
