@@ -35,14 +35,79 @@ console.log(newTaskCard);
 
 
 
+
+
 // Todo: create a function to render the task list and make cards draggable
-function renderTaskList() {}
+const tasks = [
+  {
+    id: generateTaskId(),
+    title: "Task 1",
+    description: "Description for Task 1",
+  },
+  {
+    id: generateTaskId(),
+    title: "Task 2",
+    description: "Description for Task 2",
+  },
+  // Add more tasks as needed
+];
+
+const taskContainer = document.getElementById("task-container");
+
+function renderTaskList() {
+  taskContainer.innerHTML = ""; // Clear existing content
+  tasks.forEach((task) => {
+    const taskCard = createTaskCard(task);
+    taskContainer.insertAdjacentHTML("beforeend", taskCard);
+  });
+}
+
+renderTaskList();
+
+// Add event listeners for drag and drop functionality
+const taskCards = document.querySelectorAll(".task-card");
+
+taskCards.forEach((card) => {
+  card.addEventListener("dragstart", (event) => {
+    event.dataTransfer.setData("text/plain", card.id);
+  });
+});
+
+
 
 // Todo: create a function to handle adding a new task
-function handleAddTask(event) {}
+//function handleAddTask(event) {}
+function addTask(taskName) {
+  // Generate a unique ID for the new task
+  const taskId = generateUniqueId();
+
+  // Create a new task object with the provided name and generated ID
+  const newTask = {
+    id: taskId,
+    name: taskName,
+    completed: false,
+  };
+
+  // Add the new task to the task list
+  tasks.push(newTask);
+
+  // Update the UI to reflect the new task
+  renderTaskList();
+}
+
+
 
 // Todo: create a function to handle deleting a task
-function handleDeleteTask(event) {}
+//function handleDeleteTask(event) {}
+
+// Function to delete a task
+function deleteTask(taskId) {
+    tasks = tasks.filter(task => task.id !== taskId); // Assuming tasks is your array of tasks
+}
+
+
+
+
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {}
