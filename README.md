@@ -23,7 +23,7 @@ In order for my work to show what I can do, I used HTML and JavaScript to:
 
 -- When I refresh the page, the saved tasks persist.
 
-You can find my deployed page here:
+You can find my deployed page here (:
 
 - <https://tuffythejeep.github.io/the-task-board-to-end-all-task-boards/>
 
