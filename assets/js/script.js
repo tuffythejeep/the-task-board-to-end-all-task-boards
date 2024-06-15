@@ -6,11 +6,8 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 function generateTaskId() {
   const timestamp = Date.now(); // this will get me the current timestamp
   const randomNum = Math.floor(Math.random() * 1000); // Generate a random number less than 1000
-  const uniqueId = `${timestamp}-${randomNum}`; // this will combine timestamp and random number
-
-  return uniqueId;
+  return `${timestamp}-${randomNum}`; // this will generate (combine timestamp and random) number
 }
-
 const taskId = generateTaskId();
 console.log(taskId);
 
@@ -35,6 +32,8 @@ const newTaskCard = createTaskCard(
 );
 console.log(newTaskCard);
 // Output: should be { id: 'uniqueTaskId', title: 'Task Title', description: 'Task Description', dueDate: 'Due Date'}
+
+
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {}
